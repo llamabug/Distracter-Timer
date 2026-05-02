@@ -4,13 +4,40 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+      body {  
+      animation: shake 5s infinite;
+    }
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      2% { transform: translate(8px, -8px); }
+      5% { transform: translate(-8px, 8px); }
+      7% { transform: translate(8px, 8px); }
+      10% { transform: translate(0px, 0px); }
+      12% { transform: translate(8px, -8px); }
+      15% { transform: translate(-8px, 8px); }
+      27% { transform: translate(8px, 8px); }
+      20% { transform: translate(0px, 0px); }
+      30% { transform: translate(0px, 0px); }
+      40% { transform: translate(0px, 0px); }
+      50% { transform: translate(0px, 0px); }
+      60% { transform: translate(0px, 0px); }
+      70% { transform: translate(0px, 0px); }
+      80% { transform: translate(0px, 0px); }
+      90% { transform: translate(0px, 0px); }
+      100% { transform: translate(0px, 0px); }
+    }
+    
+
+  </style>
 </head>
 <body>
+  <div id="shake">
   <h1 id="display">00</h1>
   <button id="stop" onclick="window.location.href='black.html'">STOP</button>
   <button id="enough" onclick="stopImages()">ENOUGH</button>
   <div id="container"></div>
- 
+ </div>
   <script src="script.js" defer></script>
 </body>
 </html>
