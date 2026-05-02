@@ -1,0 +1,88 @@
+:root {
+  --color1: #76f84b;
+  --color2: black;
+}
+
+* {
+  font-family: Google Sans Code;
+  color: var(--color1);
+}
+
+body, html {
+  height: 96%;
+}
+
+body {
+  background-color: var(--color2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2vw;
+  border: var(--color1) solid;
+}
+
+.time {
+  border: solid var(--color1);
+  background-color: var(--color2);
+  width: 200px;
+  height: 100px;
+}
+
+button {
+  margin-top: 20px;
+  border: solid var(--color1) 2px;
+  background: none;
+  font-size: 30px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+image {
+  width: 30px;
+}
+
+.wrapper {
+  margin-top: 10%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+input {
+  padding-left: 20px;
+  font-size: 40px;
+}
+
+#stop {
+  color: var(--color1);
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  top: 80%;
+  background-color: var(--color2);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+#enough {
+  display: none;
+}
+
+.blobfish {
+  position:absolute;
+  width:80px;
+  z-index:1;
+  animation: fall 6s linear forwards;
+}
+
+@keyframes fall {
+  from{transform: translateY(0px);}
+  to{transform: translateY(100vh);}
+}

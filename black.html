@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopped Timer</title>
+  <style>
+  body {
+  margin-top: -3%;
+  background: black;
+  color: lime;
+  font-family: monospace;
+  font-size: 23.5px;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+#container {  /* 👈 THIS removes the top gap */
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+    .char {
+      display: inline-block;
+    }
+
+    #scary {
+      position: absolute;
+      height: 100%;
+      width: auto;
+      top: 14%;
+      right: 15%;
+      z-index: 10;
+      animation: fadeIn 3s; 
+    }
+    @keyframes fadeIn {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <img id="scary" src="media/monster.png">
+</div>
+
+<script>
+const container = document.getElementById("container");
+
+// what your "page" starts as (can be anything)
+const text = `
+THIS IS A GLITCH NG TEX    T FIELD. 
+EVE RY LETTER IS INDEPENDENT.
+IT NEVER STOP  S CHANGING.  
+WELCOME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT. 
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS IS A GLIT  CHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WEL  COME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD. 
+EVERY LETT ER IS  INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS  INDEPENDENT.
+IT   NEVER STOPS    .
+WEL COME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+W ELCOME TO THE STA TIC.
+THIS IS A   GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS C HANGING.
+WELCO  ME     THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER I S INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS I S A GLITCHING T EXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOP   E STATIC.
+THI   IS A GLITC   FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO   THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVE Y LETTER IS INDEPENDENT.
+IT NEVER ST OPS CHANGING.
+WELC OME TO  THE STATIC.
+THIS I  ETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME   TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS    INDEPENDENT.
+IT NEVER  STOPS CHANGING.
+WELCOME TO   THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHAN GING.
+WE LCOME TO THE STATIC.THIS IS A GLITCH NG TEX    T FIELD. 
+EVE RY LETTER IS INDEPENDENT.
+IT NEVER STOP  S CHANGING.  
+WELCOME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT. 
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS IS A GLIT  CHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WEL  COME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD. 
+EVERY LETT ER IS  INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS  INDEPENDENT.
+IT   NEVER STOPS    .
+WEL COME TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+W ELCOME TO THE STA TIC.
+THIS IS A   GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS C HANGING.
+WELCO  ME     THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER I S INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO THE STATIC.
+THIS I S A GLITCHING T EXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOP   E STATIC.
+THI   IS A GLITC   FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME TO   THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVE Y LETTER IS INDEPENDENT.
+IT NEVER ST OPS CHANGING.
+WELC OME TO  THE STATIC.
+THIS I  ETTER IS INDEPENDENT.
+IT NEVER STOPS CHANGING.
+WELCOME   TO THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS    INDEPENDENT.
+IT NEVER  STOPS CHANGING.
+WELCOME TO   THE STATIC.
+THIS IS A GLITCHING TEXT FIELD.
+EVERY LETTER IS INDEPENDENT.
+IT NEVER STOPS CHAN GING.
+WE LCOME TO THE STATIC.
+`;
+
+// characters to swap into
+const chars = "     ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=-";
+
+function randomChar() {
+  return chars[Math.floor(Math.random() * chars.length)];
+}
+
+// build spans for each character
+text.split("").forEach((ch) => {
+  const span = document.createElement("span");
+  span.className = "char";
+  span.textContent = ch === "\n" ? "\n" : ch;
+  container.appendChild(span);
+
+  // only animate non-space characters
+  if (ch !== "\n") {
+    startGlitch(span);
+  }
+});
+
+function startGlitch(span) {
+  function update() {
+    span.textContent = randomChar();
+
+    // each letter gets its own random speed (50ms - 400ms)
+    const delay = Math.random() * 1000 + 50;
+
+    setTimeout(update, delay);
+  }
+
+  update();
+}
+setInterval(() => {
+  const monster = document.getElementById("scary");
+
+  // random “glitch blackout”
+  monster.style.opacity = Math.random() > 0.85 ? 0 : 1;
+}, 80);
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const scream = new Audio('media/scream.mp3');
+  const rizzmas = new Audio('media/rizzmas.mp3');
+  const monster = document.getElementById("scary");
+
+  document.addEventListener('click', () => {
+    scream.currentTime = 0;
+
+    scream.play().then(() => {
+      scream.onended = () => {
+
+        // 👇 change image right when scream ends
+        monster.src = "media/monster3.png";
+
+        // then play second sound
+        rizzmas.currentTime = 0;
+        rizzmas.play().catch(() => {});
+      };
+    }).catch(() => {});
+  }, { once: true });
+});
+</script>
+
+</body>
+</html>
