@@ -65,7 +65,7 @@ function runTimer() {
 
         setTimeout(() => {
             window.location.href = "https://www.youtube.com/watch?v=xvFZjo5PgG0";
-        }, 3000);
+        }, 1500);
 
         return;
     }
@@ -96,7 +96,7 @@ function runTimer() {
 
     if (timeLeft == 67) {
         
-        display.textContent = '6 🫲🤪🫱7 ';
+        display.textContent = '6 🫲🤪🫱 7';
         sixseven.play();
         setTimeout(runTimer, 2000);
         return;
