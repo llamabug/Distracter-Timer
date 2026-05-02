@@ -219,7 +219,7 @@ function addImages() {
 
     spawnInterval = setInterval(() => {
         const img = document.createElement("img");
-        img.src = "media/blobfish1.png"; // make sure this path is correct
+        img.src = "media/blobfish1.png"; 
         img.classList.add("blobfish");
 
         img.style.width="80px";
@@ -231,7 +231,7 @@ function addImages() {
 
         count++;
 
-        if (count >= 1000) { // reasonable number
+        if (count >= 1000) { 
             clearInterval(spawnInterval);
         }
     }, 100);
