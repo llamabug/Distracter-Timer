@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-#container {  /* 👈 THIS removes the top gap */
+#container {  
   word-wrap: break-word;
   white-space: pre-wrap;
 }
@@ -48,7 +48,6 @@
 <script>
 const container = document.getElementById("container");
 
-// what your "page" starts as (can be anything)
 const text = `
 THIS IS A GLITCH NG TEX    T FIELD. 
 EVE RY LETTER IS INDEPENDENT.
@@ -159,21 +158,17 @@ IT NEVER STOPS CHAN GING.
 WE LCOME TO THE STATIC.
 `;
 
-// characters to swap into
 const chars = "     ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=-";
 
 function randomChar() {
   return chars[Math.floor(Math.random() * chars.length)];
 }
-
-// build spans for each character
 text.split("").forEach((ch) => {
   const span = document.createElement("span");
   span.className = "char";
   span.textContent = ch === "\n" ? "\n" : ch;
   container.appendChild(span);
 
-  // only animate non-space characters
   if (ch !== "\n") {
     startGlitch(span);
   }
@@ -183,7 +178,6 @@ function startGlitch(span) {
   function update() {
     span.textContent = randomChar();
 
-    // each letter gets its own random speed (50ms - 400ms)
     const delay = Math.random() * 1000 + 50;
 
     setTimeout(update, delay);
@@ -194,7 +188,6 @@ function startGlitch(span) {
 setInterval(() => {
   const monster = document.getElementById("scary");
 
-  // random “glitch blackout”
   monster.style.opacity = Math.random() > 0.85 ? 0 : 1;
 }, 80);
 
@@ -210,10 +203,8 @@ window.addEventListener("DOMContentLoaded", () => {
     scream.play().then(() => {
       scream.onended = () => {
 
-        // 👇 change image right when scream ends
         monster.src = "media/monster3.png";
 
-        // then play second sound
         rizzmas.currentTime = 0;
         rizzmas.play().catch(() => {});
       };
